@@ -39,6 +39,10 @@ const MenuPrincipal = ({ navigation }) => {
                         
                         <StyledButton onPress={() => { }}>
                             <ButtonText>Marcas</ButtonText>
+                        </StyledButton> 
+                        <Line />
+                        <StyledButton onPress={() => navigation.navigate("Registrar Vehículos")}>
+                            <ButtonText>Vehículos</ButtonText>
                         </StyledButton>
 
                         <Line />
