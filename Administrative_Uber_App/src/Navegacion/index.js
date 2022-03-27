@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../Vistas/Usuarios/LoginScreen';
 import WelcomeHomeScreen from "../Vistas/Home/WelcomeHomeScreen";
 import HomeScreen from "../Vistas/Home/HomeScreen";
 import RecoverAccountScreen from "../Vistas/Usuarios/RecoverAccountScreen";
 import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
+import Vehiculos from "../Vistas/Vehiculos/Vehiculos"
+
 
 import { Colors } from '../Componentes/styleUser';
 
@@ -53,6 +55,11 @@ const MenuNavegacion = () => {
                     }}
                 />
                 <Stack.Screen name="Menú Principal" component={HomeScreen}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Registrar Vehículos" component={Vehiculos}
                     options={{
                         title: ""
                     }}
