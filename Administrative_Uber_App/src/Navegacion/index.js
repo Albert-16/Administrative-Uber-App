@@ -6,7 +6,7 @@ import WelcomeHomeScreen from "../Vistas/Home/WelcomeHomeScreen";
 import HomeScreen from "../Vistas/Home/HomeScreen";
 import RecoverAccountScreen from "../Vistas/Usuarios/RecoverAccountScreen";
 import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
-
+import Modelos from "../Vistas/Modelos/VistaModelos";
 import { Colors } from '../Componentes/styleUser';
 
 import "react-native-gesture-handler";
@@ -34,14 +34,14 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
- 
-               
+
+
                 <Stack.Screen name="Inicio" component={WelcomeHomeScreen}
                     options={{
                         title: ""
                     }}
                 />
-                
+
                 <Stack.Screen name="Recuperar Cuenta" component={RecoverAccountScreen}
                     options={{
                         title: ""
@@ -53,6 +53,11 @@ const MenuNavegacion = () => {
                     }}
                 />
                 <Stack.Screen name="Menú Principal" component={HomeScreen}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Administrar Modelos" component={Modelos}
                     options={{
                         title: ""
                     }}

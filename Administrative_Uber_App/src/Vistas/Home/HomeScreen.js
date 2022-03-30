@@ -36,11 +36,9 @@ const MenuPrincipal = ({ navigation }) => {
                         <Subtitle Menu={true}>Pagina Principal</Subtitle>
                        
                         <Line />
-                        
-                        <StyledButton onPress={() => { }}>
-                            <ButtonText>Marcas</ButtonText>
+                        <StyledButton onPress={() =>navigation.navigate("Administrar Modelos")}>
+                            <ButtonText>Modelos</ButtonText>
                         </StyledButton>
-
                         <Line />
 
                        
