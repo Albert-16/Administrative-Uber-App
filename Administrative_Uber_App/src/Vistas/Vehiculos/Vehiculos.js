@@ -1,4 +1,4 @@
-import React, { useState, ScrollView } from 'react';
+import React, { useState, ScrollView, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Octicons, Ionicons } from '@expo/vector-icons';
 import { Formik } from 'formik';
@@ -29,20 +29,34 @@ import {
     StyledScroll
 } from '../../Componentes/styleUser';
 const { color2, color6, color5 } = Colors;
-import { IP, VEHICULOS, PORT, LISTARVEHICULOS } from '@env';
+import { IP, VEHICULOS, PORT, LISTARMODELOS } from '@env';
 
 const Vehiculos = ({ navigation }) => {
 
     const Ruta = "http://" + IP + ":" + PORT + VEHICULOS
-    const RutaListar = "http://" + IP + ":" + PORT + LISTARVEHICULOS
+    const RutaListar = "http://" + IP + ":" + PORT + LISTARMODELOS
 
-    const Lista = ["Vehiculo","Pera"];
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
-    const [items, setItems] = useState([
-        { label: Lista[0], value: 3 },
-        { label: Lista[1], value: 4 }
-    ])
+    const [items, setItems] = useState([])
+
+    useEffect(async () => {
+        const token = await AsyncStorage.getItem('token');
+      
+        await fetch(RutaListar, {
+          method: 'GET',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+          }
+        })
+          .then((res) => res.json()).then((resJson) => {
+            console.log(resJson)
+            setItems(resJson);
+          })
+          .catch(console.error)          
+      }, []);
 
     return (          
             <StyledContainer>
@@ -57,7 +71,8 @@ const Vehiculos = ({ navigation }) => {
                                 anio: '',
                                 id_Modelo: '',
                                 color: '',
-                                descripcion_Modelo: ''
+                                descripcion_Modelo: '',
+                                nombre: ''
                             }}
                         onSubmit={async (values) => {
 
@@ -77,7 +92,7 @@ const Vehiculos = ({ navigation }) => {
 
                                 const json = await respuesta.json();
                                 const data = json.Información;
-                                console.log(data);
+                               console.log(data);
 
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
@@ -92,9 +107,18 @@ const Vehiculos = ({ navigation }) => {
                             <StyledFormArea>
 
                                 <MyTextInput
+                                    label="Nombre"
+                                    icon="person"
+                                    placeholder="Ingrese el nombre"
+                                    placeholderTextColor={color5}
+                                    onChangeText={handleChange('nombre')}
+                                    onBlur={handleBlur('nombre')}
+                                    values={values.nombre}
+                                />
+                                <MyTextInput
                                     label="Placa"
                                     icon="credit-card"
-                                    placeholder="Ingrese la Placa"
+                                    placeholder="Ingrese la placa"
                                     placeholderTextColor={color5}
                                     onChangeText={handleChange('placa')}
                                     onBlur={handleBlur('placa')}
@@ -103,8 +127,8 @@ const Vehiculos = ({ navigation }) => {
 
                                 <MyTextInput
                                     label="Año"
-                                    icon="person"
-                                    placeholder="Ingrese el Año"
+                                    icon="tasklist"
+                                    placeholder="Ingrese el año"
                                     placeholderTextColor={color5}
                                     onChangeText={handleChange('anio')}
                                     onBlur={handleBlur('anio')}
@@ -118,16 +142,21 @@ const Vehiculos = ({ navigation }) => {
                                         setOpen={setOpen}
                                         setValue={setValue}
                                         setItems={setItems}
-                                        onSelectItem = {(item) =>{
+                                        onChangeValue = {(value) =>{                                       
                                             values.id_Modelo = value;
+                                            console.log(value);
                                         }}
                                         style = {{backgroundColor: color5}}
+                                        searchable = {true}
+                                        searchPlaceholder = "Escribe el modelo que buscas"
+                                        placeholder = "Seleccione un Modelo"
+                                        theme='DARK'
                                     />
                                 </View>
 
                                 <MyTextInput
                                     label="Color"
-                                    icon="person"
+                                    icon="star"
                                     placeholder="Ingrese el color"
                                     placeholderTextColor={color5}
                                     onChangeText={handleChange('color')}
@@ -142,7 +171,7 @@ const Vehiculos = ({ navigation }) => {
                                 <StyledButton btn2={true} onPress={() => navigation.navigate("Menú Principal")}>
                                     <ButtonText btn2={true} >Cancelar</ButtonText>
                                 </StyledButton>
-                                <Line />
+                            
 
                             </StyledFormArea>
                         )}
