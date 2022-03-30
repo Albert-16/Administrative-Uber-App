@@ -1,57 +1,85 @@
-import React, { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-
-
+import React, { useState,useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import DropDownPicker from 'react-native-dropdown-picker';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
-    StyledContainer,
-    InnerContainer,
-    PageTitulo,
-    Subtitle,
-    StyledFormArea,
-    StyledButton,
-    ButtonText,
-    Line,
-    MenuContainer,
-    Avatar,
-    MenuImagen,
-    StyleScrollView
+  StyledContainer,
+  InnerContainer,
+  PageLogo,
+  PageTitulo,
+  Subtitle,
+  StyledFormArea,
+  LeftIcon,
+  StyledInputLabel,
+  StyledTextInput,
+  RightIcon,
+  Colors,
+  StyledButton,
+  ButtonText,
+  MsgBox,
+  Line,
+  ExtraView,
+  ExtraText,
+  TextLink,
+  TextLinkContent,
+  StyledScroll
 } from '../../Componentes/styleUser';
 
+import { IP, LISTARMARCAS, PORT } from '@env';
+
+const HomeScreen = () => {
+ const RutaListar = "http://" + IP + ":" + PORT + LISTARMARCAS;
+  const [open, setOpen] = useState(false);
+  const [value, setValue] = useState(null);
+  const [items, setItems] = useState([]);
+
+  useEffect(async () => {
+    const token = await AsyncStorage.getItem('token');
+  
+    await fetch(RutaListar, {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + token
+      }
+    })
+      .then((res) => res.json()).then((resJson) => {
+        console.log(resJson)
+        setItems(resJson);
+      })
+      .catch(console.error)
 
 
-const MenuPrincipal = ({ navigation }) => {
+      
+  }, []);
 
-    return (
+  return (
+    <StyledContainer>
+      <InnerContainer>
+        <DropDownPicker
 
-        <StyledContainer>
-            <StatusBar style="light" />
+          open={open}
+          value={value}
+          items={items}
+          setOpen={setOpen}
+          setValue={setValue}
+          setItems={setItems}
+        />
+      </InnerContainer>
 
-            <InnerContainer>
+    </StyledContainer>
 
+  );
+}
 
-                <MenuContainer>
-                    <StyledFormArea>
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 120,
+    margin: 100,
+    alignItems: "center"
+  }
+});
 
-                        <PageTitulo Menu={true}>Uber</PageTitulo>
-                        <Subtitle Menu={true}>Pagina Principal</Subtitle>
-                       
-                        <Line />
-                        
-                        <StyledButton onPress={() => { }}>
-                            <ButtonText>Marcas</ButtonText>
-                        </StyledButton>
-
-                        <Line />
-
-                       
-                    </StyledFormArea>
-                </MenuContainer>
-
-            </InnerContainer>
-
-        </StyledContainer>
-
-    );
-};
-
-export default MenuPrincipal;
+export default HomeScreen;

@@ -39,6 +39,7 @@ const Login = ({ navigation }) => {
 
     const [hidePassword, setHidePassword] = useState(true);
     const Ruta = "http://" + IP + ":" + PORT + LOGIN;
+    
     return (
         <StyledScroll>
             <StyledContainer>
@@ -52,7 +53,7 @@ const Login = ({ navigation }) => {
                         initialValues={{ login: '', contrasenia: '' }}
                         onSubmit={async (values) => {
                             try {
-                                // console.log(values);
+                                console.log(values);
                                 const respuesta = await fetch(Ruta, {
                                     method: 'POST',
                                     headers: {
