@@ -64,7 +64,7 @@ const VehiculosModificar = ({ navigation }) => {
                 <StatusBar style="light" />
                 <InnerContainer>
 
-                    <PageTitulo>Modificar Vehículos</PageTitulo>
+                    <PageTitulo>Modificar Vehículo</PageTitulo>
                     <Formik
                         initialValues={
                             {
