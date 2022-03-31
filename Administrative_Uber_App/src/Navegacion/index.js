@@ -7,6 +7,7 @@ import HomeScreen from "../Vistas/Home/HomeScreen";
 import RecoverAccountScreen from "../Vistas/Usuarios/RecoverAccountScreen";
 import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
 import Vehiculos from "../Vistas/Vehiculos/Vehiculos"
+import ListarVehiculos from "../Vistas/Vehiculos/ListarVehiculos"
 
 
 import { Colors } from '../Componentes/styleUser';
@@ -60,6 +61,11 @@ const MenuNavegacion = () => {
                     }}
                 />
                 <Stack.Screen name="Registrar Vehículos" component={Vehiculos}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Listar Vehículos" component={ListarVehiculos}
                     options={{
                         title: ""
                     }}

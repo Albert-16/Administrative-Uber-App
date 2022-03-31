@@ -44,8 +44,10 @@ const MenuPrincipal = ({ navigation }) => {
                         <StyledButton onPress={() => navigation.navigate("Registrar Vehículos")}>
                             <ButtonText>Vehículos</ButtonText>
                         </StyledButton>
-
                         <Line />
+                        <StyledButton onPress={() => navigation.navigate("Listar Vehículos")}>
+                            <ButtonText>Listar Vehículos</ButtonText>
+                        </StyledButton>
 
                        
                     </StyledFormArea>
