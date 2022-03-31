@@ -7,7 +7,7 @@ import HomeScreen from "../Vistas/Home/HomeScreen";
 import RecoverAccountScreen from "../Vistas/Usuarios/RecoverAccountScreen";
 import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
 import Vehiculos from "../Vistas/Vehiculos/Vehiculos"
-import ListarVehiculos from "../Vistas/Vehiculos/ListarVehiculos"
+import ListarV from "../Vistas/Vehiculos/ListarVehiculos"
 
 
 import { Colors } from '../Componentes/styleUser';
@@ -37,14 +37,14 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
- 
-               
+
+
                 <Stack.Screen name="Inicio" component={WelcomeHomeScreen}
                     options={{
                         title: ""
                     }}
                 />
-                
+
                 <Stack.Screen name="Recuperar Cuenta" component={RecoverAccountScreen}
                     options={{
                         title: ""
@@ -65,11 +65,13 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
-                <Stack.Screen name="Listar Vehículos" component={ListarVehiculos}
+
+                <Stack.Screen name="ListarV" component={ListarV}
                     options={{
                         title: ""
                     }}
                 />
+
             </Stack.Navigator>
         </NavigationContainer>
     );
