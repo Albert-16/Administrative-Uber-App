@@ -86,8 +86,7 @@ const ListarVehiculos = () => {
                              try {
                                
                                  const DataVehiculos=[
-                                   { 
-                                  
+                                   {                                    
 
                                    }
                                  ];
@@ -109,7 +108,7 @@ const ListarVehiculos = () => {
                             
                         }}
                     >
-                        <Text style={tw`text-white text-center text-xl`}>Seleccionar {selected?.title}</Text>
+                        <Text style={tw`text-white text-center text-xl`}>Modificar {selected?.title}</Text>
                     </StyledButton>
                 </View>
             </View>
