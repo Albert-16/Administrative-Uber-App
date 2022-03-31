@@ -52,6 +52,9 @@ const MenuPrincipal = ({ navigation }) => {
                         </StyledButton>
                         <Line />
                        
+                        <StyledButton onPress={() => navigation.navigate("Modificar Vehículos")}>
+                            <ButtonText>Modificar Vehículos</ButtonText>
+                        </StyledButton>
 
                        
                     </StyledFormArea>

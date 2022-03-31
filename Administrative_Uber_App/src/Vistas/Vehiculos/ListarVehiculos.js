@@ -20,8 +20,6 @@ const Ruta = "http://" + IP + ":" + PORT + IMAGE;
 const RutaListar = "http://" + IP + ":" + PORT + LISTARVEHICULOS;
 const RutaMetodoPago = "http://" + IP + ":" + PORT + MetodoPago + "id=";
 
-
-
 const ListarVehiculos = () => {
     const navigation = useNavigation();
     const [selected, setSelected] = useState(null);
@@ -29,14 +27,9 @@ const ListarVehiculos = () => {
     const [Cliente, setCliente] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-
-
-
     useEffect(async () => {
         const token = await AsyncStorage.getItem('token');
         setIsLoading(true);
-
-
 
         await fetch(RutaListar, {
             method: 'GET',
@@ -51,30 +44,20 @@ const ListarVehiculos = () => {
             })
             .catch(console.error)
             .finally(() => setIsLoading(false));
-
-
-
     }, []);
-
 
     const ListaDatos = ListarVeh.Información;
     return (
-
         <SafeAreaView style={tw`flex-grow bg-black`}>
-
             <View>
-
-                <View>
-
-                    
+                <View>                  
                     <PageTitulo style={tw`text-white py-3 text-xl  text-center `}>Lista de Vehículos</PageTitulo>
                     <Line />
                 </View>
-
-                <FlatList data={ListaDatos}
+                <FlatList data={ListaDatos}               
                     keyExtractor={(item) => item.Id}
                     scrollEnabled={true}
-                    renderItem={({ item: { Id, title, image, multiplier,Estado,Modelo,Marca,Año }, item }) => (
+                    renderItem={({ item: { Id, title, image, multiplier,Estado,Modelo,Marca,Año,Color,Placa,id_Modelo }, item }) => (
                         <TouchableOpacity style={tw`flex-row justify-between px-5 items-center ${Id === selected?.Id && "bg-gray-700"}`}
                             onPress={() => setSelected(item)}
                         >
@@ -90,7 +73,7 @@ const ListarVehiculos = () => {
                                 <Text style={tw`text-white  font-semibold`}>{title} - {Año}</Text>
                                 <Text style={tw`text-white`}>Marca: {Marca}</Text>
                                 <Text style={tw`text-white`}>Modelo: {Modelo}</Text>
-                                
+                                <Text style={tw`text-white`}>Color: {Color}</Text>                               
                             </View>
                             <Text style={tw`text-white `}>{Estado}</Text>
                         </TouchableOpacity>
@@ -99,38 +82,31 @@ const ListarVehiculos = () => {
 
                 <View style={tw`mt-auto border-t border-gray-200`}>
                     <StyledButton disabled={!selected} style={tw`rounded-full`}
-                        onPress={async () => {
-                            /*   
+                        onPress={async () => {                               
                              try {
                                
-                               const precio = travelTimeInformation?.distance?.value * surgeChargeRate * selected?.multiplier / 100; 
-                                 const DataViajes=[
+                                 const DataVehiculos=[
                                    { 
-                                     origen: origin,
-                                     destino: destination,
-                                     viaje: travelTimeInformation,
-                                     Cliente: Cliente,
-                                     Vehiculo: selected,
-                                     total: precio,
+                                  
+
                                    }
                                  ];
-                                 const InformacionViaje = JSON.stringify(DataViajes);
-                                 await AsyncStorage.setItem('DataViajes',InformacionViaje);
-                                 if(MetodoDePago.Titulo == "Lista Vacía")
+                                 const InformacionVehiculo = JSON.stringify(DataVehiculos);
+                                 await AsyncStorage.setItem('DataVehiculos',InformacionVehiculo);
+                                 console.log(InformacionVehiculo);
+                                 if(LISTARVEHICULOS.Titulo == "Lista Vacía")
                                  {
-                                   navigation.navigate("Pago");
+                                   navigation.navigate("Menú Principal");
                                  }
                                  else
                                  {
-                                   const tipo = JSON.stringify(ListaMetodoPagos[0]);
-                                   await AsyncStorage.setItem('Tipo', tipo);
-                                   navigation.navigate("ConfirmarViaje");
+                                   navigation.navigate("Modificar Vehículos");
                                  }
                                  //console.log(DataViajes);
                              } catch (error) {
                                console.log(error.toString());
                              }
-                            */
+                            
                         }}
                     >
                         <Text style={tw`text-white text-center text-xl`}>Seleccionar {selected?.title}</Text>
