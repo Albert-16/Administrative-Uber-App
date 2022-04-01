@@ -85,14 +85,10 @@ const ListarVehiculos = () => {
                         onPress={async () => {                               
                              try {
                                
-                                 const DataVehiculos=[
-                                   {                                    
-
-                                   }
-                                 ];
-                                 const InformacionVehiculo = JSON.stringify(DataVehiculos);
+                                 
+                                 const InformacionVehiculo = JSON.stringify(selected);
                                  await AsyncStorage.setItem('DataVehiculos',InformacionVehiculo);
-                                 console.log(InformacionVehiculo);
+                                
                                  if(LISTARVEHICULOS.Titulo == "Lista Vacía")
                                  {
                                    navigation.navigate("Menú Principal");
