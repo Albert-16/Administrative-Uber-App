@@ -26,7 +26,7 @@ const ListarVehiculos = () => {
     const [ListarVeh, setListarVeh] = useState([]);
     const [Cliente, setCliente] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-
+    
     useEffect(async () => {
         const token = await AsyncStorage.getItem('token');
         setIsLoading(true);
@@ -104,7 +104,7 @@ const ListarVehiculos = () => {
                             
                         }}
                     >
-                        <Text style={tw`text-white text-center text-xl`}>Modificar {selected?.title}</Text>
+                        <Text style={tw`text-white text-center text-xl`}>Editar {selected?.title} - {selected?.Año}</Text>
                     </StyledButton>
                 </View>
             </View>

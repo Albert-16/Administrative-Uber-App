@@ -31,11 +31,12 @@ import {
 const { color2, color6, color5 } = Colors;
 import { IP, VEHICULOS, PORT, LISTARMODELOS, MODIFICARVEHICULOS } from '@env';
 
+
 const VehiculosModificar = ({ navigation }) => {
 
     const Ruta = "http://" + IP + ":" + PORT + VEHICULOS
     const RutaListar = "http://" + IP + ":" + PORT + LISTARMODELOS
-    const RutaModificar = "http://" + IP + ":" + PORT + MODIFICARVEHICULOS
+   
 
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
@@ -51,12 +52,16 @@ const VehiculosModificar = ({ navigation }) => {
     }]);
     const [Vehiculos, setVehiculos] = useState([]);
     
-    const idEstado = Vehiculos?.Estado == "Activo" ? 1 : 0;
+    
+    
     //console.log(Vehiculos?.Estado)
     useEffect(async () => {
         const token = await AsyncStorage.getItem('token');
         const dataVehiculo = JSON.parse(await AsyncStorage.getItem('DataVehiculos'));
         setVehiculos(dataVehiculo);
+        
+
+       
         await fetch(RutaListar, {
             method: 'GET',
             headers: {
@@ -77,7 +82,8 @@ const VehiculosModificar = ({ navigation }) => {
     }, []);
 
     
-    //console.log(Vehiculos);
+   
+    
     return (
 
         <StyledContainer>
@@ -85,22 +91,24 @@ const VehiculosModificar = ({ navigation }) => {
             <InnerContainer>
 
                 <PageTitulo>Modificar Vehículo</PageTitulo>
+                {Vehiculos?.Estado && (
                 <Formik
                     initialValues={
                         {
                             placa: Vehiculos?.Placa,
                             anio: Vehiculos?.Año,
-                            id_Modelo: '',
-                            color: '',
-                            descripcion_Modelo: '',
-                            nombre: '',
-                            estado: ''
+                            id_Modelo: Vehiculos?.id_Modelo,
+                            color: Vehiculos?.Color,
+                            nombre: Vehiculos?.title,
+                            estado: Vehiculos?.Estado === "Activo"?1:0
                         }}
                     onSubmit={async (values) => {
 
                         try {
-                           
-                            setValue2(idEstado);
+                            
+                            
+                            const RutaModificar = "http://" + IP + ":" + PORT + MODIFICARVEHICULOS + "id_Vehiculo=" + Vehiculos?.Id;
+                            
                             const token = await AsyncStorage.getItem('token');
                             //Peticion para guardar vehiculos
                             const respuesta = await fetch(RutaModificar, {
@@ -119,7 +127,7 @@ const VehiculosModificar = ({ navigation }) => {
 
                             console.log("Mensaje: ", json.Mensaje);
                             Alert.alert("Aviso", json.Mensaje);
-
+                            
                         } catch (error) {
                             console.log(error);
                             Alert.alert("Error", "error: " + error.message);
@@ -164,7 +172,7 @@ const VehiculosModificar = ({ navigation }) => {
                             <View>
                                 <DropDownPicker
                                     open={open2}
-                                    value={value2}
+                                    value={Vehiculos?.Estado === "Activo" ? 1:0}
                                     items={estado}
                                     setOpen={setOpen2}
                                     setValue={setValue2}
@@ -197,7 +205,7 @@ const VehiculosModificar = ({ navigation }) => {
                             <View style={tw`flex-grow`}>
                                 <DropDownPicker
                                     open={open}
-                                    value={value}
+                                    value={Vehiculos?.id_Modelo}
                                     items={items}
                                     setOpen={setOpen}
                                     setValue={setValue}
@@ -226,6 +234,7 @@ const VehiculosModificar = ({ navigation }) => {
                         </StyledFormArea>
                     )}
                 </Formik>
+                )}
             </InnerContainer>
 
         </StyledContainer>
