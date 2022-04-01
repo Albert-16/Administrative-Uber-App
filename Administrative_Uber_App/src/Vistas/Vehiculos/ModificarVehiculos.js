@@ -104,11 +104,9 @@ const VehiculosModificar = ({ navigation }) => {
                         }}
                     onSubmit={async (values) => {
 
-                        try {
-                            
-                            
+                        try {                           
                             const RutaModificar = "http://" + IP + ":" + PORT + MODIFICARVEHICULOS + "id_Vehiculo=" + Vehiculos?.Id;
-                            
+
                             const token = await AsyncStorage.getItem('token');
                             //Peticion para guardar vehiculos
                             const respuesta = await fetch(RutaModificar, {
