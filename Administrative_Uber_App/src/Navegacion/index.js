@@ -6,6 +6,8 @@ import WelcomeHomeScreen from "../Vistas/Home/WelcomeHomeScreen";
 import HomeScreen from "../Vistas/Home/HomeScreen";
 import RecoverAccountScreen from "../Vistas/Usuarios/RecoverAccountScreen";
 import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
+import Marcas from "../Vistas/Marcas/vistaAgregarMarcas";
+import Ciudades from "../Vistas/Ciudades/vistaAgregarCiudades";
 
 import { Colors } from '../Componentes/styleUser';
 
@@ -34,14 +36,14 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
- 
-               
+
+
                 <Stack.Screen name="Inicio" component={WelcomeHomeScreen}
                     options={{
                         title: ""
                     }}
                 />
-                
+
                 <Stack.Screen name="Recuperar Cuenta" component={RecoverAccountScreen}
                     options={{
                         title: ""
@@ -53,6 +55,16 @@ const MenuNavegacion = () => {
                     }}
                 />
                 <Stack.Screen name="Menú Principal" component={HomeScreen}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Administrar Marcas" component={Marcas}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="Administrar Ciudades" component={Ciudades}
                     options={{
                         title: ""
                     }}

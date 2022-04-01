@@ -37,13 +37,16 @@ const MenuPrincipal = ({ navigation }) => {
                        
                         <Line />
                         
-                        <StyledButton onPress={() => { }}>
+                        <StyledButton onPress={() => navigation.navigate("Administrar Marcas")}>
                             <ButtonText>Marcas</ButtonText>
+                        </StyledButton>
+
+                        <StyledButton onPress={() => navigation.navigate("Administrar Ciudades")}>
+                            <ButtonText>Ciudades</ButtonText>
                         </StyledButton>
 
                         <Line />
 
-                       
                     </StyledFormArea>
                 </MenuContainer>
 
