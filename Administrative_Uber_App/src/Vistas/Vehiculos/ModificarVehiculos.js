@@ -100,7 +100,7 @@ const VehiculosModificar = ({ navigation }) => {
                             id_Modelo: Vehiculos?.id_Modelo,
                             color: Vehiculos?.Color,
                             nombre: Vehiculos?.title,
-                            estado: Vehiculos?.Estado === "Activo"?1:0
+                            estado: 1
                         }}
                     onSubmit={async (values) => {
 
@@ -122,7 +122,9 @@ const VehiculosModificar = ({ navigation }) => {
                             const json = await respuesta.json();
                             const data = json.Información;
                             console.log(data);
-
+                            if(json.Titulo == "Registro Actualizado"){
+                                navigation.navigate("Menú Principal");
+                            }
                             console.log("Mensaje: ", json.Mensaje);
                             Alert.alert("Aviso", json.Mensaje);
                             
@@ -170,7 +172,7 @@ const VehiculosModificar = ({ navigation }) => {
                             <View>
                                 <DropDownPicker
                                     open={open2}
-                                    value={Vehiculos?.Estado === "Activo" ? 1:0}
+                                    value={value2}
                                     items={estado}
                                     setOpen={setOpen2}
                                     setValue={setValue2}
