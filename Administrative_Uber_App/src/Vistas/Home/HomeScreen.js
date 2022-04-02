@@ -45,6 +45,11 @@ const MenuPrincipal = ({ navigation }) => {
                             <ButtonText>Ciudades</ButtonText>
                         </StyledButton>
 
+                        <StyledButton onPress={() => navigation.navigate("ListarM")}>
+                            <ButtonText>Listar Marcas</ButtonText>
+                        </StyledButton>
+
+                     
                         <Line />
 
                     </StyledFormArea>

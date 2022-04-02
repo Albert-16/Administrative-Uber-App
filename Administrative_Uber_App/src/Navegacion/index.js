@@ -6,9 +6,10 @@ import WelcomeHomeScreen from "../Vistas/Home/WelcomeHomeScreen";
 import HomeScreen from "../Vistas/Home/HomeScreen";
 import RecoverAccountScreen from "../Vistas/Usuarios/RecoverAccountScreen";
 import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
-import Marcas from "../Vistas/Marcas/vistaAgregarMarcas";
+import Marcas from "../Vistas/Marcas/RegistrarMarcas";
 import Ciudades from "../Vistas/Ciudades/vistaAgregarCiudades";
-
+import ListarMarcas from "../Vistas/Marcas/ListarMarcas"; 
+import EditarMarcas from "../Vistas/Marcas/EditarMarcas";
 import { Colors } from '../Componentes/styleUser';
 
 import "react-native-gesture-handler";
@@ -39,6 +40,17 @@ const MenuNavegacion = () => {
 
 
                 <Stack.Screen name="Inicio" component={WelcomeHomeScreen}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="EditarMarcas" component={EditarMarcas}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="ListarM" component={ListarMarcas}
                     options={{
                         title: ""
                     }}

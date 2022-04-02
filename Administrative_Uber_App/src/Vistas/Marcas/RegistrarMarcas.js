@@ -28,11 +28,17 @@ import {
 } from '../../Componentes/styleUser';
 const { color2, color6, color5 } = Colors;
 import { IP, MARCAS, PORT } from '@env';
-
+import DropDownPicker from 'react-native-dropdown-picker';
 const Marcas = ({ navigation }) => {
     const Ruta = "http://" + IP + ":" + PORT + MARCAS
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState(null);
+    const [items, setItems] = useState([
+        { label: 'Activo', value: '1' },
+        { label: 'Inactivo', value: '0' }
+    ]);
     return (
-        <StyledScroll>
+       
             <StyledContainer>
                 <StatusBar style="light" />
                 <InnerContainer>
@@ -46,6 +52,8 @@ const Marcas = ({ navigation }) => {
                         }
                         onSubmit={async (values) => {
                             try {
+                                //console.log(values)
+                                
                                 const token = await AsyncStorage.getItem('token');
 
                                 // console.log(Ruta);
@@ -68,14 +76,14 @@ const Marcas = ({ navigation }) => {
 
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
-
+                                
                             } catch (error) {
                                 console.log(error);
                                 Alert.alert("Error", "error: " + error.message);
                             }
 
-                        }} > 
-                      
+                        }} >
+
                         {({ handleChange, handleBlur, handleSubmit, values }) => (
                             <StyledFormArea>
                                 <MyTextInput label="Marca"
@@ -86,13 +94,20 @@ const Marcas = ({ navigation }) => {
                                     onBlur={handleBlur('descripcion_Marca')}
                                     values={values.descripcion_Marca} />
 
-                                <MyTextInput label="Estado"
-                                    icon="credit-card"
-                                    placeholder="Ingrese el estado"
-                                    placeholderTextColor={color5}
-                                    onChangeText={handleChange('estado_Marca')}
-                                    onBlur={handleBlur('estado_Marca')}
-                                    values={values.estado_Marca} />
+                                <DropDownPicker
+                                    open={open}
+                                    style={{backgroundColor: color2,height:60}}
+                                    value={value}
+                                    items={items}
+                                    setOpen={setOpen}
+                                    setValue={setValue}
+                                    setItems={setItems}
+                                    onChangeValue={(value)=> {
+                                        values.estado_Marca = value
+                                    }}
+                                    theme="DARK"
+                                    placeholder='Seleccione un Estado'
+                                />
 
                                 <StyledButton onPress={handleSubmit}>
                                     <ButtonText>Registrar Marca</ButtonText>
@@ -108,7 +123,7 @@ const Marcas = ({ navigation }) => {
                     </Formik>
                 </InnerContainer>
             </StyledContainer>
-        </StyledScroll>
+      
     );
 };
 const MyTextInput = ({ label, icon, ...props }) => {
