@@ -9,7 +9,7 @@ import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
 import Vehiculos from "../Vistas/Vehiculos/Vehiculos"
 import ListarV from "../Vistas/Vehiculos/ListarVehiculos"
 import ModificarVehiculos from "../Vistas/Vehiculos/ModificarVehiculos"
-
+import SubirImagen from "../Vistas/Vehiculos/SubirImagenVehiculo"
 
 import { Colors } from '../Componentes/styleUser';
 
@@ -41,6 +41,12 @@ const MenuNavegacion = () => {
 
 
                 <Stack.Screen name="Inicio" component={WelcomeHomeScreen}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="SubirImagen" component={SubirImagen}
                     options={{
                         title: ""
                     }}
