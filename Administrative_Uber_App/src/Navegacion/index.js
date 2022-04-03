@@ -28,7 +28,7 @@ const MenuNavegacion = () => {
                 headerLeftContainerStyle: {
                     paddingLeft: 20
                 },
-            }} initialRouteName="Login" >
+            }} initialRouteName="Inicio" >
                 <Stack.Screen name="Login" component={Login}
                     options={{
                         title: ""
