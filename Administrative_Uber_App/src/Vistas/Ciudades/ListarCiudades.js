@@ -11,22 +11,22 @@ import {
 
 import 'intl';
 import 'intl/locale-data/jsonp/es-HN';
-const { color5,color2,color3,color6,color1 } = Colors;
+const { color5, color2, color3, color6, color1 } = Colors;
 import tw from 'tailwind-react-native-classnames';
 import { useNavigation } from '@react-navigation/native';
 
-import { IP, IMAGE, PORT, LISTARMARCAS } from '@env';
+import { IP, IMAGE, PORT, LISTARCIUDADES } from '@env';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 const Ruta = "http://" + IP + ":" + PORT + IMAGE;
-const RutaListar = "http://" + IP + ":" + PORT + LISTARMARCAS;
+const RutaListar = "http://" + IP + ":" + PORT + LISTARCIUDADES;
 
 
 const ListarMarcas = () => {
     const navigation = useNavigation();
     const [selected, setSelected] = useState(null);
-    const [ListarMar, setListarMar] = useState([]);
+    const [ListarCiu, setListarCiu] = useState([]);
 
-
+    console.log("H", RutaListar);
     useEffect(async () => {
         const token = await AsyncStorage.getItem('token');
 
@@ -40,45 +40,44 @@ const ListarMarcas = () => {
             }
         })
             .then((res) => res.json()).then((resJson) => {
-                setListarMar(resJson)
+                setListarCiu(resJson)
             })
             .catch(console.error)
 
     }, []);
 
-    const ListaDatos = ListarMar.Información;
-   
-    const LeftContent = props => <Avatar.Icon {...props} icon="car" style={{backgroundColor:color6,alignItems: "center"}} />
+    const ListaDatos = ListarCiu.Información;
+
+    const LeftContent = props => <Avatar.Icon {...props} icon="map-marker-circle" style={{ backgroundColor: color6, alignItems: "center" }} />
     return (
-        <SafeAreaView style={[tw`flex-grow `,{backgroundColor:"#000"}]}>
+        <SafeAreaView style={[tw`flex-grow `, { backgroundColor: "#000" }]}>
             <View>
                 <View>
-                    <PageTitulo style={tw`text-white py-3 text-xl  text-center `}>Lista de Marcas</PageTitulo>
+                    <PageTitulo style={tw`text-white py-3 text-xl  text-center `}>Lista de Ciudades</PageTitulo>
                     <Line />
                 </View>
-                <FlatList data={ListaDatos} 
+                <FlatList data={ListaDatos}
                     keyExtractor={(item) => item.Id}
                     scrollEnabled={true}
-                    horizontal
-                    renderItem={({ item: { Id, Marca, Estado }, item }) => (
-                        <TouchableOpacity style={[tw`p-2 pl-6 pb-8 pt-4   m-2 w-40`,{
-                            
+
+                    renderItem={({ item: { Id, Ciudad }, item }) => (
+                        <TouchableOpacity style={[tw`p-2 pl-6 pb-8 pt-4`, {
+
                         }]}
                             onPress={() => setSelected(item)}
                         >
-                            
+
                             <Card style={
                                 {
-                                    width:'100%',
-                                    backgroundColor: Id === selected?.Id ? color3: "#000",
+                                    width: '100%',
+                                    backgroundColor: Id === selected?.Id ? color3 : "#000",
                                     color: "#fff",
-                                    alignItems: 'center',
-                                    }}>
-                                <Card.Title style={{textAlign: 'center',alignItems: 'center', marginLeft:10}}  left={LeftContent} />
+                                    
+                                }}>
+                                <Card.Title style={{ textAlign: 'center', alignItems: 'center', marginLeft: 10 }} left={LeftContent} />
                                 <Card.Content>
-                                    <Title style={{textAlign:"center",color:"#fff"}}>{Marca}</Title>
-                                    <Paragraph style={{textAlign:"center",color:"#fff", backgroundColor: Estado === "Activo" ? "#29AA20": "#FF3E30"}}>{Estado}</Paragraph>
-                                </Card.Content> 
+                                    <Title style={{ textAlign: "center", color: "#fff" }}>{Ciudad}</Title>
+                                </Card.Content>
                             </Card>
 
                         </TouchableOpacity>
@@ -91,18 +90,16 @@ const ListarMarcas = () => {
                             try {
 
                                 
-                                const InformacionMarcas = JSON.stringify(selected);
-                                await AsyncStorage.setItem('DataMarcas',InformacionMarcas);
-                               
-                                if(ListarMar.Titulo == "Lista Vacía")
-                                {
-                                  navigation.navigate("Menú Principal");
-                                }
-                                else
-                                {
-                                  navigation.navigate("EditarMarcas");
-                                }
-                                //console.log(DataViajes);
+                                    const InformacionCiudades = JSON.stringify(selected);
+                                    await AsyncStorage.setItem('DataCiudades', InformacionCiudades);
+    
+                                    if (ListarCiu.Titulo == "Lista Vacía") {
+                                        navigation.navigate("Menú Principal");
+                                    }
+                                    else {
+                                        navigation.navigate("EditarCiudad");
+                                    }
+                                    //console.log(DataViajes);
                                 
                             } catch (error) {
                                 console.log(error.toString());
@@ -110,7 +107,7 @@ const ListarMarcas = () => {
 
                         }}
                     >
-                        <Text style={tw`text-white text-center text-xl`}>Editar {selected?.Marca}</Text>
+                        <Text style={tw`text-white text-center text-xl`}>Editar {selected?.Ciudad}</Text>
                     </StyledButton>
                 </View>
             </View>
