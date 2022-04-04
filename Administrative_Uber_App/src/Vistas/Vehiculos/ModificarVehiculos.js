@@ -123,7 +123,7 @@ const VehiculosModificar = ({ navigation }) => {
                             const data = json.Información;
                             console.log(data);
                             if(json.Titulo == "Registro Actualizado"){
-                                navigation.navigate("Menú Principal");
+                                navigation.navigate("AdminVehiculos");
                             }
                             console.log("Mensaje: ", json.Mensaje);
                             Alert.alert("Aviso", json.Mensaje);

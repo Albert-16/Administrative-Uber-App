@@ -153,8 +153,9 @@ const Vehiculos = ({ navigation }) => {
                                             console.log(value);
                                         }}
                                         style = {{backgroundColor: color2,marginBottom: open == true ? 100:0 }}
-                                
-                                        placeholder = "Seleccione un Modelo"
+                                        searchable={true}
+                                        searchPlaceholder="Escribe el modelo que buscas"
+                                        placeholder="Seleccione un Modelo"
                                         theme='DARK'
                                     />
                                 </View>

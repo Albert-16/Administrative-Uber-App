@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import * as ImagePicker from 'expo-image-picker';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { IP,  PORT,SUBIRIMAGEN } from '@env';
+import { IP, PORT, SUBIRIMAGEN } from '@env';
 import {
     StyledContainer,
     InnerContainer,
@@ -98,8 +98,10 @@ export default function SubirImagen({ navigation }) {
             const json = await response.json();
             console.log(json);
             //console.log(response);
-            Alert.alert("Aviso",json.Mensaje);
-            navigation.navigate("Menú Principal");
+            Alert.alert("Aviso", json.Mensaje);
+            if (json.Mensaje === "El archivo se almacenó con éxito.") {
+                navigation.navigate("AdminVehiculos");
+            }
         }
         catch (error) {
             console.log(error);
@@ -161,7 +163,7 @@ export default function SubirImagen({ navigation }) {
 
                         ) : null}
                         <Button title="Salir"
-                            onPress={() => {navigation.navigate("ListarV"); }}
+                            onPress={() => { navigation.navigate("ListarV"); }}
                         ></Button>
                     </MenuContainer>
 
