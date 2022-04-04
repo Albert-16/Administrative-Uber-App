@@ -62,9 +62,12 @@ const Ciudades = ({ navigation }) => {
 
                                 const json = await respuesta.json();
                                 const data = json.Información;
-                                console.log(data);
+                               // console.log(data);
 
-
+                               if(json.Mensaje === "El registro se almacenó correctamente.")
+                               {
+                                    navigation.navigate("AdminCiudades");
+                               }
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
 

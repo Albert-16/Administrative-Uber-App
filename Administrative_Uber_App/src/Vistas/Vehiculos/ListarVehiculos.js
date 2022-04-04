@@ -111,10 +111,10 @@ const ListarVehiculos = () => {
                             >
                                 <Card.Title title={title} subtitle={Placa} left={LeftContent} />
                                 <Card.Content>
-                                    <Paragraph>{Marca}</Paragraph>
-                                    <Paragraph>{Modelo}</Paragraph>
-                                    <Paragraph>{Año}</Paragraph>
-                                    <Paragraph>{Color}</Paragraph>
+                                    <Paragraph>Marca: {Marca}</Paragraph>
+                                    <Paragraph>Modelo: {Modelo}</Paragraph>
+                                    <Paragraph>Año: {Año}</Paragraph>
+                                    <Paragraph>Color: {Color}</Paragraph>
                                 </Card.Content>
                                 <Card.Cover source={{ uri: Ruta + image }} />
                                 <Card.Actions style={{ padding: 5 }}>

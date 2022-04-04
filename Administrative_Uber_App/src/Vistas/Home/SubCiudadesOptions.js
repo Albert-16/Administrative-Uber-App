@@ -28,9 +28,8 @@ const Menu = ({ navigation }) => {
                
                     <StyledFormArea>
                        
-                        <PageTitulo Menu={true}>Uber</PageTitulo>
-                        <Subtitle Menu={true}>Bienvenido</Subtitle>
-                        <Avatar resizeMode="contain" source={require('../../../assets/img/LogouBER2.png')} />
+                        <PageTitulo >Administración de Ciudades</PageTitulo>
+                     
                         <Line />
                         <StyledButton onPress={() => { navigation.navigate("Administrar Ciudades") }}>
                             <ButtonText>Registrar Ciudades</ButtonText>

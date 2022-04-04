@@ -85,7 +85,10 @@ const Marcas = ({ navigation }) => {
                                 const data = json.Información;
                                 console.log(data);
 
-                                navigation.navigate("Menú Principal");
+                                if(json.Mensaje === "El registro se actualizó correctamente.")
+                                {
+                                        navigation.navigate("AdminMarcas");
+                                }
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
                                 

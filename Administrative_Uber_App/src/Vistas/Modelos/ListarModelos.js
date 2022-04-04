@@ -53,7 +53,7 @@ const ListarMarcas = () => {
         <SafeAreaView style={[tw`flex-grow `,{backgroundColor:"#000"}]}>
             <View>
                 <View>
-                    <PageTitulo style={tw`text-white py-3 text-xl  text-center `}>Lista de Marcas</PageTitulo>
+                    <PageTitulo style={tw`text-white py-3 text-xl  text-center `}>Lista de Modelos</PageTitulo>
                     <Line />
                 </View>
                 <FlatList data={ListaDatos} 

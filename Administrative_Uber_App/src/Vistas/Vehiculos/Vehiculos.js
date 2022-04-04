@@ -97,6 +97,10 @@ const Vehiculos = ({ navigation }) => {
 
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
+                                if(json.Mensaje === "Registro almacenado con éxito.")
+                                {
+                                    navigation.navigate("AdminVehiculos");
+                                }
 
                             } catch (error) {
                                 console.log(error);

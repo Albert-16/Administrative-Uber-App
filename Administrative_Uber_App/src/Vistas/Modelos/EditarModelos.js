@@ -110,6 +110,10 @@ const Modelos = ({ navigation }) => {
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
                                 
+                                if(json.Mensaje === "El registro se actualizó correctamente.")
+                                {
+                                        navigation.navigate("AdminModelos");
+                                }
                             } catch (error) {
                                 console.log(error);
                                 Alert.alert("Error", "error: " + error.message);

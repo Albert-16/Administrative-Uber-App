@@ -73,7 +73,7 @@ const Modelos = ({ navigation }) => {
                     initialValues={
                         {
                             descripcion_Modelo: '',
-                            estado_Modelo: '',
+                            estado_Modelo: 1,
                             id_Marca: '',
                         }
                     }
@@ -82,7 +82,7 @@ const Modelos = ({ navigation }) => {
                             const token = await AsyncStorage.getItem('token');
 
                             // console.log(Ruta);
-                            //console.log(values);
+                            console.log("Modelos",values);
 
                             const respuesta = await fetch(Ruta, {
                                 method: 'POST',
@@ -101,6 +101,10 @@ const Modelos = ({ navigation }) => {
 
                             console.log("Mensaje: ", json.Mensaje);
                             Alert.alert("Aviso", json.Mensaje);
+                            if(json.Mensaje === "El registro se almacenó correctamente.")
+                            {
+                                    navigation.navigate("AdminModelos");
+                            }
 
                         } catch (error) {
                             console.log(error);

@@ -76,7 +76,10 @@ const Marcas = ({ navigation }) => {
 
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
-                                
+                                if(json.Mensaje === "El registro se almacenó correctamente.")
+                                {
+                                    navigation.navigate("AdminMarcas");
+                                }
                             } catch (error) {
                                 console.log(error);
                                 Alert.alert("Error", "error: " + error.message);

@@ -41,7 +41,7 @@ const VehiculosModificar = ({ navigation }) => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [open2, setOpen2] = useState(false);
-    const [value2, setValue2] = useState(1);
+    const [value2, setValue2] = useState(null);
     const [items, setItems] = useState([]);
     const [estado, setEstado] = useState([{
         label: 'Activo',

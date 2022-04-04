@@ -78,7 +78,10 @@ const EditarCiudades = ({ navigation }) => {
 
                                 console.log("Mensaje: ", json.Mensaje);
                                 Alert.alert("Aviso", json.Mensaje);
-                                navigation.navigate("Menú Principal");
+                                if(json.Mensaje === "El registro ha sido actualizado")
+                                {
+                                        navigation.navigate("AdminCiudades");
+                                }
                                 
                             } catch (error) {
                                 console.log(error);
