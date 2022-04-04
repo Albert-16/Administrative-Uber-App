@@ -14,6 +14,14 @@ import ListarV from "../Vistas/Vehiculos/ListarVehiculos"
 import ModificarVehiculos from "../Vistas/Vehiculos/ModificarVehiculos"
 import SubirImagen from "../Vistas/Vehiculos/SubirImagenVehiculo"
 import SubMenuV from "../Vistas/Home/SubVehiculosOptions";
+import Marcas from "../Vistas/Marcas/RegistrarMarcas";
+import Ciudades from "../Vistas/Ciudades/RegistrarCiudades";
+import ListarMarcas from "../Vistas/Marcas/ListarMarcas";
+import EditarMarcas from "../Vistas/Marcas/EditarMarcas";
+import ListarCiudades from "../Vistas/Ciudades/ListarCiudades";
+import EditarCiudades from "../Vistas/Ciudades/EditarCiudades";
+import AdminMarcas from "../Vistas/Home/SubMarcasOptions";
+import AdminCiudad from "../Vistas/Home/SubCiudadesOptions";
 import { Colors } from '../Componentes/styleUser';
 
 import "react-native-gesture-handler";
@@ -21,6 +29,7 @@ import "react-native-gesture-handler";
 const { color5, color6, color1, color2 } = Colors;
 
 const Stack = createStackNavigator();
+
 
 const MenuNavegacion = () => {
     return (
@@ -55,7 +64,43 @@ const MenuNavegacion = () => {
                     }}
                 />
 
+                <Stack.Screen name="AdminMarcas" component={AdminMarcas}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="AdminCiudades" component={AdminCiudad}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="EditarMarcas" component={EditarMarcas}
+                    options={{
+                        title: ""
+                    }}
+                />
+
                 <Stack.Screen name="SubirImagen" component={SubirImagen}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="EditarCiudad" component={EditarCiudades}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="ListarM" component={ListarMarcas}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="ListarC" component={ListarCiudades}
                     options={{
                         title: ""
                     }}
@@ -82,10 +127,21 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
+                <Stack.Screen name="Administrar Marcas" component={Marcas}
+                    options={{
+                        title: ""
+                    }}
+                />
 
 
 
                 <Stack.Screen name="EditarPerfil" component={EditarPerfil}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="Administrar Ciudades" component={Ciudades}
                     options={{
                         title: ""
                     }}
@@ -117,6 +173,7 @@ const MenuNavegacion = () => {
 
             </Stack.Navigator >
         </NavigationContainer >
+
     );
 };
 

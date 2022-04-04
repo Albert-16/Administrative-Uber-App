@@ -30,14 +30,14 @@ const data = [
     {
         id: "3",
         title: "Marcas",
-        screen: "MapView",
+        screen: "AdminMarcas",
         icon: "enviroment",
         image: "UberMarcas.jpeg"
     },
     {
         id: "4",
         title: "Ciudades",
-        screen: "MapView",
+        screen: "AdminCiudades",
         icon: "enviroment",
         image: "UberCiudad.jpg"
     }
