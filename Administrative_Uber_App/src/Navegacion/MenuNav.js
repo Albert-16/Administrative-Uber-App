@@ -42,10 +42,10 @@ const data = [
         image: "UberCiudad.jpg"
     }
 ];
-
+import { useNavigation } from '@react-navigation/native';
 
 const NavOptions = () => {
-   
+    const navigation = useNavigation();
     return (
 
 

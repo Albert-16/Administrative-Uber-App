@@ -53,7 +53,9 @@ const Login = ({ navigation }) => {
                         initialValues={{ login: '', contrasenia: '' }}
                         onSubmit={async (values) => {
                             try {
-                                console.log(values);
+                                //console.log(values);
+                                //console.log(Ruta);
+                               // console.log(values);
                                 const respuesta = await fetch(Ruta, {
                                     method: 'POST',
                                     headers: {

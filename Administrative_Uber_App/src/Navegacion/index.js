@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator } from '@react-navigation/stack';
 import Login from '../Vistas/Usuarios/LoginScreen';
 import WelcomeHomeScreen from "../Vistas/Home/WelcomeHomeScreen";
 import HomeScreen from "../Vistas/Home/HomeScreen";
@@ -9,6 +9,11 @@ import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
 import MiPerfil from "../Vistas/Usuarios/MeProfile";
 import EditarPerfil from "../Vistas/Usuarios/EditProfile";
 import NuevoUsuario from "../Vistas/Usuarios/NewUser";
+import Vehiculos from "../Vistas/Vehiculos/Vehiculos"
+import ListarV from "../Vistas/Vehiculos/ListarVehiculos"
+import ModificarVehiculos from "../Vistas/Vehiculos/ModificarVehiculos"
+import SubirImagen from "../Vistas/Vehiculos/SubirImagenVehiculo"
+import SubMenuV from "../Vistas/Home/SubVehiculosOptions";
 import { Colors } from '../Componentes/styleUser';
 
 import "react-native-gesture-handler";
@@ -36,14 +41,26 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
- 
-               
+
+
                 <Stack.Screen name="Inicio" component={WelcomeHomeScreen}
                     options={{
                         title: ""
                     }}
                 />
-                
+
+                <Stack.Screen name="AdminVehiculos" component={SubMenuV}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="SubirImagen" component={SubirImagen}
+                    options={{
+                        title: ""
+                    }}
+                />
+
                 <Stack.Screen name="Recuperar Cuenta" component={RecoverAccountScreen}
                     options={{
                         title: ""
@@ -66,6 +83,8 @@ const MenuNavegacion = () => {
                     }}
                 />
 
+
+
                 <Stack.Screen name="EditarPerfil" component={EditarPerfil}
                     options={{
                         title: ""
@@ -77,8 +96,27 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
-            </Stack.Navigator>
-        </NavigationContainer>
+
+
+                <Stack.Screen name="Registrar Vehículos" component={Vehiculos}
+                    options={{
+                        title: ""
+                    }}
+                />
+                <Stack.Screen name="ListarV" component={ListarV}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="Modificar Vehículos" component={ModificarVehiculos}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+            </Stack.Navigator >
+        </NavigationContainer >
     );
 };
 

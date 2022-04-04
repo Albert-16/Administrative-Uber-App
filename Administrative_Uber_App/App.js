@@ -11,7 +11,7 @@ export default function App() {
     <Provider store={store}>
       <KeyboardAvoidingView style={{flex: 1}}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? -64 : -70}
+        keyboardVerticalOffset={Platform.OS === "ios" ? -64 : 0}
       >
       <MenuNavegacion />
       </KeyboardAvoidingView>
