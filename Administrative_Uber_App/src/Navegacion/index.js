@@ -6,7 +6,9 @@ import WelcomeHomeScreen from "../Vistas/Home/WelcomeHomeScreen";
 import HomeScreen from "../Vistas/Home/HomeScreen";
 import RecoverAccountScreen from "../Vistas/Usuarios/RecoverAccountScreen";
 import RestorePasswordScreen from "../Vistas/Usuarios/RestorePasswordScreen";
-
+import MiPerfil from "../Vistas/Usuarios/MeProfile";
+import EditarPerfil from "../Vistas/Usuarios/EditProfile";
+import NuevoUsuario from "../Vistas/Usuarios/NewUser";
 import { Colors } from '../Componentes/styleUser';
 
 import "react-native-gesture-handler";
@@ -28,7 +30,7 @@ const MenuNavegacion = () => {
                 headerLeftContainerStyle: {
                     paddingLeft: 20
                 },
-            }} initialRouteName="Inicio" >
+            }} initialRouteName="Login" >
                 <Stack.Screen name="Login" component={Login}
                     options={{
                         title: ""
@@ -53,6 +55,24 @@ const MenuNavegacion = () => {
                     }}
                 />
                 <Stack.Screen name="Menú Principal" component={HomeScreen}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="MiPerfil" component={MiPerfil}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="EditarPerfil" component={EditarPerfil}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="NuevoUsuario" component={NuevoUsuario}
                     options={{
                         title: ""
                     }}
