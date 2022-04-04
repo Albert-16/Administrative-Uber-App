@@ -28,12 +28,17 @@ const Menu = ({ navigation }) => {
                
                     <StyledFormArea>
                        
-                        <PageTitulo Menu={true}>Uber</PageTitulo>
-                        <Subtitle Menu={true}>Bienvenido (a)</Subtitle>
-                        <Avatar resizeMode="contain" source={require('../../../assets/img/LogouBER2.png')} />
+                        <PageTitulo >Administra Modelos</PageTitulo>
+                        
+                       
                         <Line />
-                        <StyledButton onPress={() => { navigation.navigate("Menú Principal") }}>
-                            <ButtonText>Menú</ButtonText>
+                        <StyledButton onPress={() => { navigation.navigate("Administrar Modelos") }}>
+                            <ButtonText>Registrar Modelos</ButtonText>
+                        </StyledButton>
+                        <Line />
+                        
+                        <StyledButton onPress={() => { navigation.navigate("ListarMo") }}>
+                            <ButtonText>Listar y Editar Modelos</ButtonText>
                         </StyledButton>
                         <Line />
                        

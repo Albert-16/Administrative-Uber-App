@@ -22,6 +22,10 @@ import ListarCiudades from "../Vistas/Ciudades/ListarCiudades";
 import EditarCiudades from "../Vistas/Ciudades/EditarCiudades";
 import AdminMarcas from "../Vistas/Home/SubMarcasOptions";
 import AdminCiudad from "../Vistas/Home/SubCiudadesOptions";
+import AdminModelos from "../Vistas/Home/SubModelOptions";
+import Modelos from "../Vistas/Modelos/RegistrarModelos";
+import ListarModelos from "../Vistas/Modelos/ListarModelos";
+import EditarModelos from "../Vistas/Modelos/EditarModelos"
 import { Colors } from '../Componentes/styleUser';
 
 import "react-native-gesture-handler";
@@ -127,6 +131,7 @@ const MenuNavegacion = () => {
                         title: ""
                     }}
                 />
+                
                 <Stack.Screen name="Administrar Marcas" component={Marcas}
                     options={{
                         title: ""
@@ -134,20 +139,45 @@ const MenuNavegacion = () => {
                 />
 
 
-
-                <Stack.Screen name="EditarPerfil" component={EditarPerfil}
+                <Stack.Screen name="Administrar Modelos" component={Modelos}
                     options={{
                         title: ""
                     }}
                 />
 
-                <Stack.Screen name="Administrar Ciudades" component={Ciudades}
+
+
+            <Stack.Screen name="EditarPerfil" component={EditarPerfil}
+                                options={{
+                                    title: ""
+                                }}
+                            />
+
+                <Stack.Screen name="ListarMo" component={ListarModelos}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+<Stack.Screen name="Administrar Ciudades" component={Ciudades}
+                    options={{
+                        title: ""
+                    }}
+                />
+                
+                <Stack.Screen name="EditarModelos" component={EditarModelos}
                     options={{
                         title: ""
                     }}
                 />
 
                 <Stack.Screen name="NuevoUsuario" component={NuevoUsuario}
+                    options={{
+                        title: ""
+                    }}
+                />
+
+                <Stack.Screen name="AdminModelos" component={AdminModelos}
                     options={{
                         title: ""
                     }}
@@ -174,6 +204,7 @@ const MenuNavegacion = () => {
             </Stack.Navigator >
         </NavigationContainer >
 
+            
     );
 };
 

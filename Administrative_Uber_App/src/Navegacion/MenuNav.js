@@ -15,7 +15,7 @@ const Ruta = "http://" + IP + ":" + PORT + IMAGE;
 const data = [
     {
         id: "1",
-        title: "Vehiculos",
+        title: "Vehículos",
         screen: "AdminVehiculos",
         icon: "enviroment",
         image: "UberHome.png"
@@ -23,7 +23,7 @@ const data = [
     {
         id: "2",
         title: "Modelos",
-        screen: "MapView",
+        screen: "AdminModelos",
         icon: "enviroment",
         image: "UberModelo.jpeg"
     },

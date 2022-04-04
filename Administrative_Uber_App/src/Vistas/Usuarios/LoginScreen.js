@@ -55,7 +55,7 @@ const Login = ({ navigation }) => {
                             try {
                                 //console.log(values);
                                 //console.log(Ruta);
-                               // console.log(values);
+                                //console.log(values);
                                 const respuesta = await fetch(Ruta, {
                                     method: 'POST',
                                     headers: {
@@ -125,10 +125,7 @@ const Login = ({ navigation }) => {
                                 <StyledButton onPress={handleSubmit}>
                                     <ButtonText>Aceptar</ButtonText>
                                 </StyledButton>
-                                <Line />
-                                <StyledButton btn2={true} onPress={() => {}}>
-                                    <ButtonText btn2={true} >Registrarse</ButtonText>
-                                </StyledButton>
+                               
                                 <Line />
 
                                 <ExtraView>
