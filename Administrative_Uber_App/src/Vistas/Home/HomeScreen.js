@@ -39,6 +39,10 @@ const MenuPrincipal = ({ navigation }) => {
                         <StyledButton onPress={() =>navigation.navigate("Administrar Modelos")}>
                             <ButtonText>Modelos</ButtonText>
                         </StyledButton>
+
+                        <StyledButton onPress={() =>navigation.navigate("ListarMo")}>
+                            <ButtonText>Listar Modelos</ButtonText>
+                        </StyledButton>
                         <Line />
 
                        
